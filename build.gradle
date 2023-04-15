@@ -1,0 +1,46 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.5'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'jpabook'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+//lombok 설정 start
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+// lombok 설정 end
+
+dependencies {
+	// dataJPA : aop, jdbc, HikariCP(커넥션풀), hibernate 등을 사용
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// 템플릿 엔진
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	// starterWeb : tomcat, webmvc 등을 쓸 수 있음
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// devtools : 여러가지 기능을 가짐. 우리가 사용하는건, 서버 재실행 없이도 코드 반영이 되도록 해줌
+	implementation 'org.springframework.boot:spring-boot-devtools'
+	// 쿼리 남기는 역할
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	runtimeOnly 'com.h2database:h2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+test {
+	useJUnitPlatform()
+}
