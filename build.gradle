@@ -14,11 +14,11 @@ configurations {
 		extendsFrom annotationProcessor
 	}
 }
+// lombok 설정 end
 
 repositories {
 	mavenCentral()
 }
-// lombok 설정 end
 
 dependencies {
 	// dataJPA : aop, jdbc, HikariCP(커넥션풀), hibernate 등을 사용
