@@ -2,15 +2,13 @@ package jpabook.jpashop;
 
 import jakarta.transaction.Transactional;
 import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.domain.repository.MemberRepository;
-import jpabook.jpashop.domain.service.MemberService;
+import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.service.MemberService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.util.Assert;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -57,6 +55,5 @@ class MemberServiceTest {
             memberService.join(member2); // 예외가 발생해야한다
         });
     }
-
 
 }
