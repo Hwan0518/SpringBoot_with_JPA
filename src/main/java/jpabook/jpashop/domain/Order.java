@@ -1,7 +1,9 @@
 package jpabook.jpashop.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -14,6 +16,7 @@ import static jakarta.persistence.FetchType.*;
 @Table(name = "orders")
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED) // set으로 따로 접근을 못하고, createOrder로만 값을 바꿀 수 있도록 하기 위함
 public class Order {
 
     @Id
@@ -25,6 +28,7 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    //order에서만 사용하므로 cascade 사용가능, 다른 곳에서 복잡하게 사용한다면 쓰면 안됨
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
